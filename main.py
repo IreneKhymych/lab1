@@ -69,7 +69,7 @@ if __name__ == '__main__':
             area = max_area_triangle.area()
             if area > max_area:
                 max_area = area
-    if max_area != float('-inf'):  # Якщо знайдено хоча б одну дійсну площу
-        print("Найбільша площа серед усіх трикутників з трьох файлів:", max_area)
+    if max_area != float('-inf'):
+        print("Найбільша площа:", max_area)
     else:
-        print("У жодному з файлів не знайдено дійсних трикутників")
+        print("Не знайдено дійсних трикутників")
