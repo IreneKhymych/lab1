@@ -70,6 +70,6 @@ if __name__ == '__main__':
             if area > max_area:
                 max_area = area
     if max_area != float('-inf'):
-        print("Найбільша площа:", max_area)
+        print("Найбільша площа трикутника:", max_area)
     else:
         print("Не знайдено дійсних трикутників")
