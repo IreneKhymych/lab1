@@ -200,3 +200,126 @@ if __name__ == '__main__':
         print("Найбільша площа трапеції:", max_area)
     else:
         print("Не знайдено дійсних трапецій")
+
+class Parallelogram:
+    def __init__(self, base, side, height):
+        if base > 0 and side > 0 and height > 0:
+            self.__base = base
+            self.__side = side
+            self.__height = height
+        else:
+            raise ValueError("Invalid parallelogram sides")
+
+    def area(self):
+        return self.__base * self.__height
+
+    def show(self):
+        print("Parallelogram:", self.__base, self.__side, self.__height)
+
+def process_file(file_path):
+    max_area_parallelogram = None
+    max_area = -float('inf')
+
+    with open(file_path, 'r') as file:
+        for line in file:
+            parts = line.strip().split()
+            figure_type = parts[0]
+
+            if figure_type == "Parallelogram":
+                parameters = list(map(float, parts[1:]))
+                if len(parameters) == 3:
+                    try:
+                        parallelogram = Parallelogram(*parameters)
+                    except ValueError:
+                        continue 
+                    area = parallelogram.area()
+
+                    if area > max_area:
+                        max_area = area
+                        max_area_parallelogram = parallelogram
+
+    return max_area_parallelogram
+
+if __name__ == '__main__':
+    file_paths = [
+        "C:/Users/Volod/Downloads/input01.txt",
+        "C:/Users/Volod/Downloads/input02.txt",
+        "C:/Users/Volod/Downloads/input03.txt"
+    ]
+    max_area = -float('inf') 
+    max_area_parallelogram = None
+
+    for file_path in file_paths:
+        max_area_parallelogram_file = process_file(file_path)
+
+        if max_area_parallelogram_file:
+            area = max_area_parallelogram_file.area()
+            if area > max_area:
+                max_area = area
+                max_area_parallelogram = max_area_parallelogram_file
+
+    if max_area_parallelogram:
+        print("Найбільша площа паралелограма:", max_area)
+    else:
+        print("Не знайдено дійсного паралелограма")
+
+class Circle:
+    def __init__(self, radius):
+        if radius > 0:
+            self.__radius = radius
+        else:
+            raise ValueError("Invalid radius")
+
+    def area(self):
+        return 3.14159 * (self.__radius ** 2)
+
+    def show(self):
+        print("Circle with radius", self.__radius)
+
+def process_file(file_path):
+    max_area_circle = None
+    max_area = -float('inf')
+
+    with open(file_path, 'r') as file:
+        for line in file:
+            parts = line.strip().split()
+            figure_type = parts[0]
+
+            if figure_type == "Circle":
+                parameters = list(map(float, parts[1:]))
+                if len(parameters) == 1:
+                    try:
+                        circle = Circle(*parameters)
+                    except ValueError:
+                        continue  
+                    area = circle.area()
+
+                    if area > max_area:
+                        max_area = area
+                        max_area_circle = circle
+
+    return max_area_circle
+
+if __name__ == '__main__':
+    file_paths = [
+        "C:/Users/Volod/Downloads/input01.txt",
+        "C:/Users/Volod/Downloads/input02.txt",
+        "C:/Users/Volod/Downloads/input03.txt"
+    ]
+
+    max_area_circle = None
+    max_area = -float('inf') 
+
+    for file_path in file_paths:
+        max_area_circle_file = process_file(file_path)
+
+        if max_area_circle_file:
+            area = max_area_circle_file.area()
+            if area > max_area:
+                max_area = area
+                max_area_circle = max_area_circle_file
+
+    if max_area_circle:
+        print("Найбільша площа круга:", max_area)
+    else:
+        print("Не знайдено дійсного круга")
