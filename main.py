@@ -134,3 +134,69 @@ if __name__ == '__main__':
         print("Найбільша площа прямокутника:", max_area)
     else:
         print("Не знайдено дійсних прямокутників")
+
+class Trapeze:
+    def __init__(self, base1, base2, side1, side2):
+        if base1 > 0 and base2 > 0 and side1 > 0 and side2 > 0 and base1 != base2 and side1 != side2:
+            self.__base1 = base1
+            self.__base2 = base2
+            self.__side1 = side1
+            self.__side2 = side2
+        else:
+            raise ValueError("Invalid trapeze sides")
+
+    def perimeter(self):
+        return self.__base1 + self.__base2 + self.__side1 + self.__side2
+
+    def area(self):
+        h = self._height()
+        return (self.__base1 + self.__base2) * h / 2
+
+    def _height(self):
+        return ((self.__side1 ** 2) - (((self.__base2 - self.__base1) ** 2) + (self.__side1 ** 2) - (self.__side2 ** 2)) / (2 * (self.__base2 - self.__base1))) ** 0.5
+
+
+def process_file(file_path):
+    max_area_trapeze = None
+    max_area = complex('-inf')
+
+    with open(file_path, 'r') as file:
+        for line in file:
+            parts = line.strip().split()
+            figure_type = parts[0]
+
+            if figure_type == "Trapeze":
+                parameters = list(map(float, parts[1:]))
+                if len(parameters) == 4:
+                    try:
+                        trapeze = Trapeze(*parameters)
+                    except ValueError:
+                        continue
+                    area = trapeze.area()
+
+                    if area.real > max_area.real:
+                        max_area = area
+                        max_area_trapeze = trapeze
+
+    return max_area_trapeze
+
+if __name__ == '__main__':
+    file_paths = [
+        "C:/Users/Volod/Downloads/input01.txt",
+        "C:/Users/Volod/Downloads/input02.txt",
+        "C:/Users/Volod/Downloads/input03.txt"
+    ]
+    max_area = float('-inf')
+
+    for file_path in file_paths:
+        max_area_trapeze = process_file(file_path)
+
+        if max_area_trapeze:
+            area = max_area_trapeze.area()
+            if area > max_area:
+                max_area = area
+
+    if max_area != float('-inf'):
+        print("Найбільша площа трапеції:", max_area)
+    else:
+        print("Не знайдено дійсних трапецій")
