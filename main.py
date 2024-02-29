@@ -73,3 +73,64 @@ if __name__ == '__main__':
         print("Найбільша площа трикутника:", max_area)
     else:
         print("Не знайдено дійсних трикутників")
+
+class Rectangle:
+    def __init__(self, width, height):
+        if width > 0 and height > 0:
+            self.__width = width
+            self.__height = height
+        else:
+            raise ValueError("Invalid rectangle sides")
+
+    def perimeter(self):
+        return 2 * (self.__width + self.__height)
+
+    def area(self):
+        return self.__width * self.__height
+
+
+def process_file(file_path):
+    max_area_rectangle = None
+    max_area = float('-inf')
+
+    with open(file_path, 'r') as file:
+        for line in file:
+            parts = line.strip().split()
+            figure_type = parts[0]
+
+            if figure_type == "Rectangle":
+                parameters = list(map(float, parts[1:]))
+                if len(parameters) == 2:
+                    try:
+                        rectangle = Rectangle(*parameters)
+                    except ValueError:
+                        continue
+                    area = rectangle.area()
+
+                    if area > max_area:
+                        max_area = area
+                        max_area_rectangle = rectangle
+
+    return max_area_rectangle
+
+
+if __name__ == '__main__':
+    file_paths = [
+        "C:/Users/Volod/Downloads/input01.txt",
+        "C:/Users/Volod/Downloads/input02.txt",
+        "C:/Users/Volod/Downloads/input03.txt"
+    ]
+    max_area = float('-inf')
+
+    for file_path in file_paths:
+        max_area_rectangle = process_file(file_path)
+
+        if max_area_rectangle:
+            area = max_area_rectangle.area()
+            if area > max_area:
+                max_area = area
+
+    if max_area != float('-inf'):
+        print("Найбільша площа прямокутника:", max_area)
+    else:
+        print("Не знайдено дійсних прямокутників")
