@@ -69,12 +69,6 @@ if __name__ == '__main__':
                 max_area = area
                 max_perimeter = max_perimeter_triangle.perimeter()
 
-    if max_area != float('-inf'):
-        print("Найбільша площа трикутника:", max_area)
-        print("Найбільший периметр трикутника:", max_perimeter)
-    else:
-        print("Не знайдено дійсних трикутників")
-
 class Rectangle:
     def __init__(self, width, height):
         if width > 0 and height > 0:
@@ -134,13 +128,6 @@ if __name__ == '__main__':
             if area > max_area:
                 max_area = area
                 max_perimeter = max_perimeter_rectangle.perimeter()
-
-    if max_area != float('-inf'):
-        print("Найбільша площа прямокутника:", max_area)
-        print("Найбільший периметр прямокутника:", max_perimeter)
-    else:
-        print("Не знайдено дійсних прямокутників")
-
 
 class Trapeze:
     def __init__(self, base1, base2, side1, side2):
@@ -208,13 +195,6 @@ if __name__ == '__main__':
             if area > max_area:
                 max_area = area
                 max_perimeter = perimeter
-
-    if max_area != float('-inf'):
-        print("Найбільша площа трапеції:", max_area)
-        print("Найбільший периметр трапеції:", max_perimeter)
-    else:
-        print("Не знайдено дійсних трапецій")
-
 
 class Parallelogram:
     def __init__(self, base, side, height):
@@ -287,12 +267,6 @@ if __name__ == '__main__':
                 max_perimeter = perimeter
                 max_perimeter_parallelogram = max_perimeter_parallelogram_file
 
-    if max_area_parallelogram:
-        print("Найбільша площа паралелограма:", max_area)
-        print("Найбільший периметр паралелограма:", max_perimeter)
-    else:
-        print("Не знайдено дійсного паралелограма")
-
 class Circle:
     def __init__(self, radius):
         if radius > 0:
@@ -362,11 +336,6 @@ if __name__ == '__main__':
                 max_perimeter = perimeter
                 max_perimeter_circle = max_perimeter_circle_file
 
-    if max_area_circle:
-        print("Найбільша площа круга:", max_area)
-        print("Найбільший периметр круга:", max_perimeter)
-    else:
-        print("Не знайдено дійсного круга")
 
 if __name__ == '__main__':
     file_paths = [
