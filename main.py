@@ -20,6 +20,9 @@ class Triangle:
         else:
             return float('-inf')
 
+        def show(self):
+            print("Triangle:", self.__a, self.__b, self.__c)
+
     def _is_valid_triangle(self, a, b, c):
         return a + b > c and a + c > b and b + c > a
 
@@ -85,6 +88,9 @@ class Rectangle:
 
     def area(self):
         return self.__width * self.__height
+
+    def show(self):
+        print("Rectangle:", self.__width, self.__height)
 
 def process_file(file_path):
     max_area_rectangle = None
@@ -156,6 +162,9 @@ class Trapeze:
     def _height(self):
         return ((self.__side1 ** 2) - (((self.__base2 - self.__base1) ** 2) + (self.__side1 ** 2) - (self.__side2 ** 2)) / (2 * (self.__base2 - self.__base1))) ** 0.5
 
+        def show(self):
+            print("Trapeze:", self.__base1, self.__base2, self.__side1, self.__side2)
+
 def process_file(file_path):
     max_area_trapeze = None
     max_perimeter_trapeze = None
@@ -221,6 +230,9 @@ class Parallelogram:
 
     def area(self):
         return self.__base * self.__height
+
+    def show(self):
+        print("Parallelogram:", self.__base, self.__side, self.__height)
 
 def process_file(file_path):
     max_area_parallelogram = None
@@ -294,6 +306,9 @@ class Circle:
     def area(self):
         return 3.14159 * (self.__radius ** 2)
 
+    def show(self):
+        print("Circle:", self.__radius)
+
 def process_file(file_path):
     max_area_circle = None
     max_perimeter_circle = None
@@ -352,3 +367,38 @@ if __name__ == '__main__':
         print("Найбільший периметр круга:", max_perimeter)
     else:
         print("Не знайдено дійсного круга")
+
+if __name__ == '__main__':
+    file_paths = [
+        "C:/Users/Volod/Downloads/input01.txt",
+        "C:/Users/Volod/Downloads/input02.txt",
+        "C:/Users/Volod/Downloads/input03.txt"
+    ]
+
+    max_area_figure = None
+    max_perimeter_figure = None
+    max_area = float('-inf')
+    max_perimeter = float('-inf')
+
+    for file_path in file_paths:
+        max_area_figure_file, max_perimeter_figure_file = process_file(file_path)
+        if max_area_figure_file and max_area_figure_file.area() > max_area:
+            max_area = max_area_figure_file.area()
+            max_area_figure = max_area_figure_file
+        if max_perimeter_figure_file and max_perimeter_figure_file.perimeter() > max_perimeter:
+            max_perimeter = max_perimeter_figure_file.perimeter()
+            max_perimeter_figure = max_perimeter_figure_file
+
+    if max_area_figure:
+        print("Фігура з найбільшою площею:", max_area_figure.__class__.__name__)
+        print("Площа:", max_area)
+        max_area_figure.show()
+    else:
+        print("Не знайдено фігур з дійсною площею")
+
+    if max_perimeter_figure:
+        print("Фігура з найбільшим периметром:", max_perimeter_figure.__class__.__name__)
+        print("Периметр:", max_perimeter)
+        max_perimeter_figure.show()
+    else:
+        print("Не знайдено фігур з дійсним периметром")
