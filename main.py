@@ -55,9 +55,9 @@ def process_file(file_path):
 
 if __name__ == '__main__':
     file_paths = [
-        "C:/Users/Volod/Downloads/input01.txt",
-        "C:/Users/Volod/Downloads/input02.txt",
-        "C:/Users/Volod/Downloads/input03.txt"
+        "MyNewFolder/input01.txt",
+        "MyNewFolder/input02.txt",
+        "MyNewFolder/input03.txt"
     ]
     max_area = float('-inf')
     max_perimeter = float('-inf')
@@ -114,10 +114,10 @@ def process_file(file_path):
     return max_area_rectangle, max_perimeter_rectangle
 
 if __name__ == '__main__':
-    file_paths = [
-        "C:/Users/Volod/Downloads/input01.txt",
-        "C:/Users/Volod/Downloads/input02.txt",
-        "C:/Users/Volod/Downloads/input03.txt"
+        file_paths = [
+        "MyNewFolder/input01.txt",
+        "MyNewFolder/input02.txt",
+        "MyNewFolder/input03.txt"
     ]
     max_area = float('-inf')
     max_perimeter = float('-inf')
@@ -180,10 +180,10 @@ def process_file(file_path):
     return max_area_trapeze, max_perimeter_trapeze
 
 if __name__ == '__main__':
-    file_paths = [
-        "C:/Users/Volod/Downloads/input01.txt",
-        "C:/Users/Volod/Downloads/input02.txt",
-        "C:/Users/Volod/Downloads/input03.txt"
+        file_paths = [
+        "MyNewFolder/input01.txt",
+        "MyNewFolder/input02.txt",
+        "MyNewFolder/input03.txt"
     ]
     max_area = float('-inf')
     max_perimeter = float('-inf')
@@ -244,10 +244,10 @@ def process_file(file_path):
     return max_area_parallelogram, max_perimeter_parallelogram
 
 if __name__ == '__main__':
-    file_paths = [
-        "C:/Users/Volod/Downloads/input01.txt",
-        "C:/Users/Volod/Downloads/input02.txt",
-        "C:/Users/Volod/Downloads/input03.txt"
+       file_paths = [
+        "MyNewFolder/input01.txt",
+        "MyNewFolder/input02.txt",
+        "MyNewFolder/input03.txt"
     ]
     max_area = -float('inf')
     max_perimeter = -float('inf')
@@ -312,10 +312,10 @@ def process_file(file_path):
     return max_area_circle, max_perimeter_circle
 
 if __name__ == '__main__':
-    file_paths = [
-        "C:/Users/Volod/Downloads/input01.txt",
-        "C:/Users/Volod/Downloads/input02.txt",
-        "C:/Users/Volod/Downloads/input03.txt"
+        file_paths = [
+        "MyNewFolder/input01.txt",
+        "MyNewFolder/input02.txt",
+        "MyNewFolder/input03.txt"
     ]
 
     max_area_circle = None
@@ -338,10 +338,10 @@ if __name__ == '__main__':
 
 
 if __name__ == '__main__':
-    file_paths = [
-        "C:/Users/Volod/Downloads/input01.txt",
-        "C:/Users/Volod/Downloads/input02.txt",
-        "C:/Users/Volod/Downloads/input03.txt"
+       file_paths = [
+        "MyNewFolder/input01.txt",
+        "MyNewFolder/input02.txt",
+        "MyNewFolder/input03.txt"
     ]
 
     max_area_figure = None
