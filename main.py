@@ -1,32 +1,23 @@
 class Triangle:
     def __init__(self, a, b, c):
-        if self._is_valid_triangle(a, b, c):
+        if a > 0 and b > 0 and c > 0 and a + b > c and a + c > b and b + c > a:
             self.__a = a
             self.__b = b
             self.__c = c
         else:
-            raise ValueError("Неправильні сторони")
+            raise ValueError("Invalid triangle sides")
 
     def perimeter(self):
         return self.__a + self.__b + self.__c
 
     def area(self):
-        p = self.perimeter() / 2
-        a = self.__a
-        b = self.__b
-        c = self.__c
-        if self._is_valid_triangle(a, b, c):
-            return (p * (p - a) * (p - b) * (p - c)) ** 0.5
-        else:
-            return float('-inf')
+        s = self.perimeter() / 2
+        return (s * (s - self.__a) * (s - self.__b) * (s - self.__c)) ** 0.5
 
-        def show(self):
-            print("Triangle:", self.__a, self.__b, self.__c)
+    def show(self):
+        print("Triangle with sides:", self.__a, self.__b, self.__c)
 
-    def _is_valid_triangle(self, a, b, c):
-        return a + b > c and a + c > b and b + c > a
-
-def process_file(file_path):
+def process_file_triangle(file_path):
     max_area_triangle = None
     max_perimeter_triangle = None
     max_area = float('-inf')
@@ -34,6 +25,8 @@ def process_file(file_path):
     with open(file_path, 'r') as file:
         for line in file:
             parts = line.strip().split()
+            if not parts:
+                continue
             figure_type = parts[0]
             if figure_type == "Triangle":
                 parameters = list(map(float, parts[1:]))
@@ -53,21 +46,6 @@ def process_file(file_path):
                         max_area_triangle = triangle
     return max_area_triangle, max_perimeter_triangle
 
-if __name__ == '__main__':
-    file_paths = [
-        "MyNewFolder/input01.txt",
-        "MyNewFolder/input02.txt",
-        "MyNewFolder/input03.txt"
-    ]
-    max_area = float('-inf')
-    max_perimeter = float('-inf')
-    for file_path in file_paths:
-        max_area_triangle, max_perimeter_triangle = process_file(file_path)
-        if max_area_triangle:
-            area = max_area_triangle.area()
-            if area > max_area:
-                max_area = area
-                max_perimeter = max_perimeter_triangle.perimeter()
 
 class Rectangle:
     def __init__(self, width, height):
@@ -75,7 +53,7 @@ class Rectangle:
             self.__width = width
             self.__height = height
         else:
-            raise ValueError("Неправильні сторони")
+            raise ValueError("Invalid rectangle sides")
 
     def perimeter(self):
         return 2 * (self.__width + self.__height)
@@ -84,9 +62,9 @@ class Rectangle:
         return self.__width * self.__height
 
     def show(self):
-        print("Rectangle:", self.__width, self.__height)
+        print("Rectangle with sides:", self.__width, "and", self.__height)
 
-def process_file(file_path):
+def process_file_rectangle(file_path):
     max_area_rectangle = None
     max_perimeter_rectangle = None
     max_area = float('-inf')
@@ -94,6 +72,8 @@ def process_file(file_path):
     with open(file_path, 'r') as file:
         for line in file:
             parts = line.strip().split()
+            if not parts:
+                continue
             figure_type = parts[0]
             if figure_type == "Rectangle":
                 parameters = list(map(float, parts[1:]))
@@ -113,31 +93,16 @@ def process_file(file_path):
                         max_area_rectangle = rectangle
     return max_area_rectangle, max_perimeter_rectangle
 
-if __name__ == '__main__':
-        file_paths = [
-        "MyNewFolder/input01.txt",
-        "MyNewFolder/input02.txt",
-        "MyNewFolder/input03.txt"
-    ]
-    max_area = float('-inf')
-    max_perimeter = float('-inf')
-    for file_path in file_paths:
-        max_area_rectangle, max_perimeter_rectangle = process_file(file_path)
-        if max_area_rectangle:
-            area = max_area_rectangle.area()
-            if area > max_area:
-                max_area = area
-                max_perimeter = max_perimeter_rectangle.perimeter()
 
 class Trapeze:
     def __init__(self, base1, base2, side1, side2):
-        if base1 > 0 and base2 > 0 and side1 > 0 and side2 > 0 and base1 != base2 and side1 != side2:
+        if base1 > 0 and base2 > 0 and side1 > 0 and side2 > 0 and base1 != base2:
             self.__base1 = base1
             self.__base2 = base2
             self.__side1 = side1
             self.__side2 = side2
         else:
-            raise ValueError("Неправильні сторони")
+            raise ValueError("Invalid trapeze sides")
 
     def perimeter(self):
         return self.__base1 + self.__base2 + self.__side1 + self.__side2
@@ -149,10 +114,10 @@ class Trapeze:
     def _height(self):
         return ((self.__side1 ** 2) - (((self.__base2 - self.__base1) ** 2) + (self.__side1 ** 2) - (self.__side2 ** 2)) / (2 * (self.__base2 - self.__base1))) ** 0.5
 
-        def show(self):
-            print("Trapeze:", self.__base1, self.__base2, self.__side1, self.__side2)
+    def show(self):
+        print("Trapeze with bases:", self.__base1, self.__base2, "and sides:", self.__side1, self.__side2)
 
-def process_file(file_path):
+def process_file_trapeze(file_path):
     max_area_trapeze = None
     max_perimeter_trapeze = None
     max_area = float('-inf')
@@ -160,6 +125,8 @@ def process_file(file_path):
     with open(file_path, 'r') as file:
         for line in file:
             parts = line.strip().split()
+            if not parts:
+                continue
             figure_type = parts[0]
             if figure_type == "Trapeze":
                 parameters = list(map(float, parts[1:]))
@@ -179,22 +146,6 @@ def process_file(file_path):
 
     return max_area_trapeze, max_perimeter_trapeze
 
-if __name__ == '__main__':
-        file_paths = [
-        "MyNewFolder/input01.txt",
-        "MyNewFolder/input02.txt",
-        "MyNewFolder/input03.txt"
-    ]
-    max_area = float('-inf')
-    max_perimeter = float('-inf')
-    for file_path in file_paths:
-        max_area_trapeze, max_perimeter_trapeze = process_file(file_path)
-        if max_area_trapeze:
-            area = max_area_trapeze.area()
-            perimeter = max_perimeter_trapeze.perimeter()
-            if area > max_area:
-                max_area = area
-                max_perimeter = perimeter
 
 class Parallelogram:
     def __init__(self, base, side, height):
@@ -212,9 +163,9 @@ class Parallelogram:
         return self.__base * self.__height
 
     def show(self):
-        print("Parallelogram:", self.__base, self.__side, self.__height)
+        print("Parallelogram with base:", self.__base, "side:", self.__side, "and height:", self.__height)
 
-def process_file(file_path):
+def process_file_parallelogram(file_path):
     max_area_parallelogram = None
     max_perimeter_parallelogram = None
     max_area = -float('inf')
@@ -223,6 +174,8 @@ def process_file(file_path):
     with open(file_path, 'r') as file:
         for line in file:
             parts = line.strip().split()
+            if not parts:
+                continue
             figure_type = parts[0]
             if figure_type == "Parallelogram":
                 parameters = list(map(float, parts[1:]))
@@ -243,29 +196,6 @@ def process_file(file_path):
 
     return max_area_parallelogram, max_perimeter_parallelogram
 
-if __name__ == '__main__':
-       file_paths = [
-        "MyNewFolder/input01.txt",
-        "MyNewFolder/input02.txt",
-        "MyNewFolder/input03.txt"
-    ]
-    max_area = -float('inf')
-    max_perimeter = -float('inf')
-    max_area_parallelogram = None
-    max_perimeter_parallelogram = None
-
-    for file_path in file_paths:
-        max_area_parallelogram_file, max_perimeter_parallelogram_file = process_file(file_path)
-
-        if max_area_parallelogram_file:
-            area = max_area_parallelogram_file.area()
-            perimeter = max_perimeter_parallelogram_file.perimeter()
-            if area > max_area:
-                max_area = area
-                max_area_parallelogram = max_area_parallelogram_file
-            if perimeter > max_perimeter:
-                max_perimeter = perimeter
-                max_perimeter_parallelogram = max_perimeter_parallelogram_file
 
 class Circle:
     def __init__(self, radius):
@@ -281,9 +211,9 @@ class Circle:
         return 3.14159 * (self.__radius ** 2)
 
     def show(self):
-        print("Circle:", self.__radius)
+        print("Circle with radius:", self.__radius)
 
-def process_file(file_path):
+def process_file_circle(file_path):
     max_area_circle = None
     max_perimeter_circle = None
     max_area = -float('inf')
@@ -292,6 +222,8 @@ def process_file(file_path):
     with open(file_path, 'r') as file:
         for line in file:
             parts = line.strip().split()
+            if not parts:
+                continue
             figure_type = parts[0]
             if figure_type == "Circle":
                 parameters = list(map(float, parts[1:]))
@@ -311,63 +243,66 @@ def process_file(file_path):
 
     return max_area_circle, max_perimeter_circle
 
-if __name__ == '__main__':
-        file_paths = [
-        "MyNewFolder/input01.txt",
-        "MyNewFolder/input02.txt",
-        "MyNewFolder/input03.txt"
-    ]
-
-    max_area_circle = None
-    max_perimeter_circle = None
-    max_area = -float('inf')
-    max_perimeter = -float('inf')
-
-    for file_path in file_paths:
-        max_area_circle_file, max_perimeter_circle_file = process_file(file_path)
-
-        if max_area_circle_file:
-            area = max_area_circle_file.area()
-            perimeter = max_perimeter_circle_file.perimeter()
-            if area > max_area:
-                max_area = area
-                max_area_circle = max_area_circle_file
-            if perimeter > max_perimeter:
-                max_perimeter = perimeter
-                max_perimeter_circle = max_perimeter_circle_file
-
 
 if __name__ == '__main__':
-       file_paths = [
-        "MyNewFolder/input01.txt",
-        "MyNewFolder/input02.txt",
-        "MyNewFolder/input03.txt"
+    file_paths = [
+        "C:/Users/Volod/Downloads/input01.txt",
+        "C:/Users/Volod/Downloads/input02.txt",
+        "C:/Users/Volod/Downloads/input03.txt"
     ]
 
     max_area_figure = None
     max_perimeter_figure = None
-    max_area = float('-inf')
-    max_perimeter = float('-inf')
+    max_area = -float('inf')
+    max_perimeter = -float('inf')
 
     for file_path in file_paths:
-        max_area_figure_file, max_perimeter_figure_file = process_file(file_path)
-        if max_area_figure_file and max_area_figure_file.area() > max_area:
-            max_area = max_area_figure_file.area()
-            max_area_figure = max_area_figure_file
-        if max_perimeter_figure_file and max_perimeter_figure_file.perimeter() > max_perimeter:
-            max_perimeter = max_perimeter_figure_file.perimeter()
-            max_perimeter_figure = max_perimeter_figure_file
 
-    if max_area_figure:
-        print("Фігура з найбільшою площею:", max_area_figure.__class__.__name__)
-        print("Площа:", max_area)
-        max_area_figure.show()
-    else:
-        print("Не знайдено фігур з дійсною площею")
+        max_area_triangle, max_perimeter_triangle = process_file_triangle(file_path)
+        if max_area_triangle and max_area_triangle.area() > max_area:
+            max_area = max_area_triangle.area()
+            max_area_figure = max_area_triangle
+        if max_perimeter_triangle and max_perimeter_triangle.perimeter() > max_perimeter:
+            max_perimeter = max_perimeter_triangle.perimeter()
+            max_perimeter_figure = max_perimeter_triangle
 
-    if max_perimeter_figure:
-        print("Фігура з найбільшим периметром:", max_perimeter_figure.__class__.__name__)
-        print("Периметр:", max_perimeter)
-        max_perimeter_figure.show()
-    else:
-        print("Не знайдено фігур з дійсним периметром")
+        max_area_rectangle, max_perimeter_rectangle = process_file_rectangle(file_path)
+        if max_area_rectangle and max_area_rectangle.area() > max_area:
+            max_area = max_area_rectangle.area()
+            max_area_figure = max_area_rectangle
+        if max_perimeter_rectangle and max_perimeter_rectangle.perimeter() > max_perimeter:
+            max_perimeter = max_perimeter_rectangle.perimeter()
+            max_perimeter_figure = max_perimeter_rectangle
+
+        max_area_trapeze, max_perimeter_trapeze = process_file_trapeze(file_path)
+        if max_area_trapeze and max_area_trapeze.area() > max_area:
+            max_area = max_area_trapeze.area()
+            max_area_figure = max_area_trapeze
+        if max_perimeter_trapeze and max_perimeter_trapeze.perimeter() > max_perimeter:
+            max_perimeter = max_perimeter_trapeze.perimeter()
+            max_perimeter_figure = max_perimeter_trapeze
+
+        # Паралелограми
+        max_area_parallelogram, max_perimeter_parallelogram = process_file_parallelogram(file_path)
+        if max_area_parallelogram and max_area_parallelogram.area() > max_area:
+            max_area = max_area_parallelogram.area()
+            max_area_figure = max_area_parallelogram
+        if max_perimeter_parallelogram and max_perimeter_parallelogram.perimeter() > max_perimeter:
+            max_perimeter = max_perimeter_parallelogram.perimeter()
+            max_perimeter_figure = max_perimeter_parallelogram
+
+        max_area_circle, max_perimeter_circle = process_file_circle(file_path)
+        if max_area_circle and max_area_circle.area() > max_area:
+            max_area = max_area_circle.area()
+            max_area_figure = max_area_circle
+        if max_perimeter_circle and max_perimeter_circle.perimeter() > max_perimeter:
+            max_perimeter = max_perimeter_circle.perimeter()
+            max_perimeter_figure = max_perimeter_circle
+
+    print("Фігура з найбільшою площею:")
+    max_area_figure.show()
+    print("Найбільша площа:", max_area)
+
+    print("Фігура з найбільшим периметром:")
+    max_perimeter_figure.show()
+    print("Найбільший периметр:", max_perimeter)
