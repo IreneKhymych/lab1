@@ -5,7 +5,7 @@ class Triangle:
             self.__b = b
             self.__c = c
         else:
-            raise ValueError("Invalid triangle sides")
+            raise ValueError("Неправильні сторони трикутника")
 
     def perimeter(self):
         return self.__a + self.__b + self.__c
@@ -53,7 +53,7 @@ class Rectangle:
             self.__width = width
             self.__height = height
         else:
-            raise ValueError("Invalid rectangle sides")
+            raise ValueError("Неправильні сторони прямокутника")
 
     def perimeter(self):
         return 2 * (self.__width + self.__height)
@@ -102,7 +102,7 @@ class Trapeze:
             self.__side1 = side1
             self.__side2 = side2
         else:
-            raise ValueError("Invalid trapeze sides")
+            raise ValueError("Неправильні сторони трапеції")
 
     def perimeter(self):
         return self.__base1 + self.__base2 + self.__side1 + self.__side2
@@ -154,7 +154,7 @@ class Parallelogram:
             self.__side = side
             self.__height = height
         else:
-            raise ValueError("Invalid parallelogram sides")
+            raise ValueError("Неправильні сторони паралелограма")
 
     def perimeter(self):
         return 2 * (self.__base + self.__side)
@@ -202,7 +202,7 @@ class Circle:
         if radius > 0:
             self.__radius = radius
         else:
-            raise ValueError("Invalid radius")
+            raise ValueError("Неправильні радіус")
 
     def perimeter(self):
         return 2 * 3.14159 * self.__radius
@@ -282,7 +282,6 @@ if __name__ == '__main__':
             max_perimeter = max_perimeter_trapeze.perimeter()
             max_perimeter_figure = max_perimeter_trapeze
 
-        # Паралелограми
         max_area_parallelogram, max_perimeter_parallelogram = process_file_parallelogram(file_path)
         if max_area_parallelogram and max_area_parallelogram.area() > max_area:
             max_area = max_area_parallelogram.area()
